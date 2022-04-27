@@ -24,25 +24,25 @@ jobs:
     steps:
       - name: Show Docker containers
         run: docker ps -a
-      - name: Show databases for root user
-        run: >-
-          mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password
-          -e "
-          SHOW DATABASES;
-          USE foo;
-          CREATE TABLE name_age_list(
-            id INT(11) AUTO_INCREMENT NOT NULL,
-            name VARCHAR(30) NOT NULL,
-            age INT(3) NOT NULL,
-            PRIMARY KEY(id)
-          );
-          DESC name_age_list;
-          INSERT INTO name_age_list VALUES(12345, 'keishi', 35);
-          INSERT INTO name_age_list VALUES(23456, '野口', 35);
-          SELECT * FROM name_age_list;
-          "
+      #- name: Show databases for root user
+      #  run: >-
+      #    mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password
+      #    -e "
+      #    SHOW DATABASES;
+      #    USE foo;
+      #    CREATE TABLE name_age_list(
+      #      id INT(11) AUTO_INCREMENT NOT NULL,
+      #      name VARCHAR(30) NOT NULL,
+      #      age INT(3) NOT NULL,
+      #      PRIMARY KEY(id)
+      #    );
+      #    DESC name_age_list;
+      #    INSERT INTO name_age_list VALUES(12345, 'keishi', 35);
+      #    INSERT INTO name_age_list VALUES(23456, '野口', 35);
+      #    SELECT * FROM name_age_list;
+      #    "
       - name: Charset Set
-        run: sudo echo 'keishi' > /etc/mysql/conf.d/mysql.cnf; cat /etc/mysql/conf.d/mysql.cnf
+        run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "SET character_set_database=utf8mb4;;"
 
       - name: Show Varialbles
         run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "show global variables like '%char%';"
