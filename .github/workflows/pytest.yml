@@ -41,5 +41,8 @@ jobs:
           INSERT INTO name_age_list VALUES(23456, '野口', 35);
           SELECT * FROM name_age_list;
           "
+      - name: Charset Set
+        run: echo 'keishi' > /etc/mysql/conf.d/mysql.cnf; cat /etc/mysql/conf.d/mysql.cnf
+
       - name: Show Varialbles
         run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "show global variables like '%char%';"
