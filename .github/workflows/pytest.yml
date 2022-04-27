@@ -37,6 +37,8 @@ jobs:
             PRIMARY KEY(id)
           );
           DESC name_age_list;
+          INSRET INTO name_age_list VALUES(12345678901, "keishi", 35);
+          SELECT * FROM name_age_list;
           "  
       #- name: Show databases for user1
       #  run: mysql --protocol=tcp -h localhost -P 3306 -u user1 -puser1_password -e "SHOW DATABASES; USE foo; SHOW TABLES FROM foo"
