@@ -40,6 +40,6 @@ jobs:
           INSERT INTO name_age_list VALUES(12345, 'keishi', 35);
           INSERT INTO name_age_list VALUES(23456, 'noguchi', 35);
           SELECT * FROM name_age_list;
-          "  
-      #- name: Show databases for user1
-      #  run: mysql --protocol=tcp -h localhost -P 3306 -u user1 -puser1_password -e "SHOW DATABASES; USE foo; SHOW TABLES FROM foo"
+          "
+      - name: Show Varialbles
+        run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "show global variables like '%char%';"
