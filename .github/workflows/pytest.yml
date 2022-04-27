@@ -9,6 +9,7 @@ jobs:
     services:
       db:
         image: mysql:5.7
+        command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
         ports:
           - 3306:3306
         env:
@@ -42,7 +43,7 @@ jobs:
       #    SELECT * FROM name_age_list;
       #    "
       - name: Charset Set
-        run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "SET character_set_database=utf8mb4;;"
+        run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "SET character_set_database=utf8mb4;"
 
       - name: Show Varialbles
         run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "show global variables like '%char%';"
