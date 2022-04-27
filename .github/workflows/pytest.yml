@@ -38,6 +38,7 @@ jobs:
           );
           DESC name_age_list;
           INSERT INTO name_age_list VALUES(12345, 'keishi', 35);
+          SELECT "-------------------------" FROM DUAL;
           SELECT * FROM name_age_list;
           "  
       #- name: Show databases for user1
