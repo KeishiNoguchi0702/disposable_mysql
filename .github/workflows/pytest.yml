@@ -42,4 +42,5 @@ jobs:
           SELECT * FROM name_age_list;
           "
       - name: Show Varialbles
-        run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "show global variables like '%char%';"
+        run: echo 'keishi' > /etc/mysql/conf.d/mysql.cnf; cat /etc/mysql/conf.d/mysql.cnf
+        #mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "show global variables like '%char%';"
