@@ -27,6 +27,15 @@ jobs:
       - name: Show databases for root user
         run: >-
           mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password
-          -e "SHOW DATABASES"  
+          -e "
+          SHOW DATABASES;
+          USE foo;
+          CREATE TABLE name_age_list(
+            id INT(11) AUTO_INCREMENT NOT NULL,
+            name VARCHAR(30) NOT NULL,
+            age INT(3) NOT NULL,
+            PRIMARY KEY(id)
+          );
+          "  
       #- name: Show databases for user1
       #  run: mysql --protocol=tcp -h localhost -P 3306 -u user1 -puser1_password -e "SHOW DATABASES; USE foo; SHOW TABLES FROM foo"
