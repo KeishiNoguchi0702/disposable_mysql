@@ -23,10 +23,9 @@ jobs:
           sleep 30
           mysql -h 127.0.0.1 --port 3306 -uroot -proot -e "show variables like 'chara%'"
       - name: DML test
-        run: |
-          sleep 5
-          mysql -h 127.0.0.1 --port 3306 -uroot -proot -e 
-          "
+        run: >-
+          mysql -h 127.0.0.1 --port 3306 -uroot -proot 
+          -e "
           show databases;
           "
 #jobs:
