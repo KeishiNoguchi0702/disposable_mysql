@@ -37,6 +37,7 @@ jobs:
             PRIMARY KEY(id)
           );
           DESC name_age_list;
+          INSERT INTO name_age_list VALUES(12345678901, 'keishi', 35);
           SELECT * FROM name_age_list;
           "  
       #- name: Show databases for user1
