@@ -28,8 +28,10 @@ jobs:
         run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "SHOW DATABASES"
       - name: Show databases for user1
         run: mysql --protocol=tcp -h localhost -P 3306 -u user1 -puser1_password -e "SHOW DATABASES"
-      - name: Select for user1
+      - name: Use foo
         run: mysql --protocol=tcp -h localhost -P 3306 -u user1 -puser1_password -e "USE foo"
+      - name: Select foo
+        run: mysql --protocol=tcp -h localhost -P 3306 -u user1 -puser1_password -e "SELECT * FROM FOO"
 
   #job-with-mysql-5_7:
   #  runs-on: ubuntu-20.04
