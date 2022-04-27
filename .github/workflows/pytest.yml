@@ -35,7 +35,7 @@ jobs:
             name VARCHAR(30) NOT NULL,
             age INT(3) NOT NULL,
             PRIMARY KEY(id)
-          ) charset set utf8;
+          );
           DESC name_age_list;
           INSERT INTO name_age_list VALUES(12345, 'keishi', 35);
           INSERT INTO name_age_list VALUES(23456, '野口', 35);
