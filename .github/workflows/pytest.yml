@@ -32,8 +32,8 @@ jobs:
             name varchar(30) not null,
             primary key(id)
           );
-          insert into test_db values(12345, '伊藤博文');
-          select * from test_db;
+          insert into test_table values(12345, '伊藤博文');
+          select * from test_table;
           "
 #jobs:
 #  job-with-mysql-5_7:
