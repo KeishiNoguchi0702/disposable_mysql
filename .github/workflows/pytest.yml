@@ -34,6 +34,7 @@ jobs:
           );
           alter table test_table convert to character set utf8;
           show create table test_table;
-          insert into test_table values(12345, '伊藤博文');
+          insert into test_table values(12345, '伊藤　　博文');
+          insert into test_table values(23456, '伊能　忠敬sokuryo');
           select * from test_table;
           "
