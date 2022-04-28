@@ -33,7 +33,7 @@ jobs:
             primary key(id)
           );
           alter table test_table convert to character set utf8;
-          show table status from test';
+          show table status from test_table;
           insert into test_table values(12345, '伊藤博文');
           select * from test_table;
           "
