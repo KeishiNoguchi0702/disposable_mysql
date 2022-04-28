@@ -27,7 +27,7 @@ jobs:
         run: >-
           mysql -h 127.0.0.1 --port 3306 -uroot -proot 
           -e "
-          use test_db;
+          use mysql;
           create table test_table(
             id int(11) auto_increment not null,
             name varchar(30) not null,
