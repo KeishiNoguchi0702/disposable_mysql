@@ -29,7 +29,7 @@ jobs:
             name varchar(30) not null,
             primary key(id)
           );
-          insert into test_table values(12345, '伊藤博文');
+          insert into test_table values(12345, 'keishi');
           select * from test_table;
           "
 #jobs:
