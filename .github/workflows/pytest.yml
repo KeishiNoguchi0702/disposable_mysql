@@ -14,13 +14,13 @@ jobs:
       - name: Check MySQL ver
         run: sudo mysql --version
 
-      - name: Set Charset
-        run: mysql -h 127.0.0.1 --port 3306 -uroot -proot -e "set character_set_database=utf8; set character_set_server=utf8;"
+      #- name: Set Charset
+      #  run: mysql -h 127.0.0.1 --port 3306 -uroot -proot -e "set character_set_database=utf8; set character_set_server=utf8;"
         
-      - name: show charset
-        run: |
-          sleep 30
-          mysql -h 127.0.0.1 --port 3306 -uroot -proot -e "show variables like 'chara%'"
+      #- name: show charset
+      #  run: |
+      #    sleep 30
+      #    mysql -h 127.0.0.1 --port 3306 -uroot -proot -e "show variables like 'chara%'"
 
       - name: DML test
         run: >-
@@ -32,6 +32,7 @@ jobs:
             name varchar(30) not null,
             primary key(id)
           );
-          insert into test_table values(12345, 'keishi');
+          alter table test_table convert to character set utf8;
+          insert into test_table values(12345, '伊藤博文');
           select * from test_table;
           "
