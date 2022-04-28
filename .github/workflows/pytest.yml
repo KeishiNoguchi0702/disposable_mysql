@@ -10,7 +10,6 @@ jobs:
     steps:
       - name: Setup mysql-action
         run: sudo systemctl start mysql.service
-        uses: mirromutth/mysql-action@v1.1
 
       - name: Check MySQL ver
         run: sudo mysql --version
