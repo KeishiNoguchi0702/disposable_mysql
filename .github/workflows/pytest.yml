@@ -4,8 +4,8 @@ on:
   push:
 
 jobs:
-  test:
-    name: Test
+  mysql:
+    name: MySQL Test
     runs-on: ubuntu-18.04
     steps:
       - name: Setup mysql-action
@@ -13,6 +13,9 @@ jobs:
 
       - name: Check MySQL ver
         run: sudo mysql --version
+
+      - name: Set Charset
+        run: mysql -h 127.0.0.1 --port 3306 -uroot -proot -e "set character_set_database=utf8; set character_set_server=utf8;"
         
       - name: show charset
         run: |
@@ -32,46 +35,3 @@ jobs:
           insert into test_table values(12345, 'keishi');
           select * from test_table;
           "
-#jobs:
-#  job-with-mysql-5_7:
-#    runs-on: ubuntu-20.04
-#    services:
-#      db:
-#        image: mysql:5.7
-#        ports:
-#          - 3306:3306
-#        env:
-#          MYSQL_ROOT_PASSWORD: root_password
-#          MYSQL_DATABASE: foo
-#          MYSQL_USER: user1
-#          MYSQL_PASSWORD: user1_password
-#        options: >-
-#          --health-cmd "mysqladmin ping"
-#          --health-interval 10s
-#          --health-timeout 5s
-#          --health-retries 5
-#    steps:
-#      - name: Show Docker containers
-#        run: docker ps -a
-      #- name: Show databases for root user
-      #  run: >-
-      #    mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password
-      #    -e "
-      #    SHOW DATABASES;
-      #    USE foo;
-      #    CREATE TABLE name_age_list(
-      #      id INT(11) AUTO_INCREMENT NOT NULL,
-      #      name VARCHAR(30) NOT NULL,
-      #      age INT(3) NOT NULL,
-      #      PRIMARY KEY(id)
-      #    );
-      #    DESC name_age_list;
-      #    INSERT INTO name_age_list VALUES(12345, 'keishi', 35);
-      #    INSERT INTO name_age_list VALUES(23456, '野口', 35);
-      #    SELECT * FROM name_age_list;
-      #    "
-      #- name: Charset Set
-      #  run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "SET character_set_database=utf8mb4;"
-
-      #- name: Show Varialbles
-      #  run: mysql --protocol=tcp -h localhost -P 3306 -u root -proot_password -e "show global variables like '%char%';"
