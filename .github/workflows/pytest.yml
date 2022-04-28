@@ -34,6 +34,7 @@ jobs:
         run: >-
           mysql -h 127.0.0.1 --port 3306 -u keishi -pkeishi
           -e "
+          use mysql;
           insert into test_table values(12345, '伊藤博文');
           insert into test_table values(23456, '伊能忠敬');
           select * from test_table;
